@@ -9,10 +9,13 @@ import { getPinnedRepos, getUser } from '@/lib/github';
 import FadeInSection from '@/components/fade-in-section';
 
 export default async function Home() {
+  // Read GitHub username from environment to allow public clones to configure it
+  const USERNAME = process.env.GITHUB_USERNAME || process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'jksalcedo';
+
   // Fetch data in parallel
   const [user, repos] = await Promise.all([
-    getUser('jksalcedo'),
-    getPinnedRepos('jksalcedo')
+    getUser(USERNAME),
+    getPinnedRepos(USERNAME)
   ]);
 
   return (

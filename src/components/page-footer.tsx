@@ -5,7 +5,7 @@ export default function PageFooter() {
     <footer className="border-t">
       <div className="container mx-auto flex flex-col sm:flex-row h-24 sm:h-20 items-center justify-center px-4 text-center text-muted-foreground">
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} JK Salcedo. All Rights Reserved.
+          &copy; {new Date().getFullYear()} Jaressen Kyle Salcedo. All Rights Reserved.
         </p>
         <div className="hidden sm:block mx-2">|</div>
         <p className="text-sm">

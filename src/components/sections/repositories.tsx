@@ -21,7 +21,7 @@ export default function RepositoriesSection({ repos }: { repos: GithubRepo[] }) 
       <SectionTitle>Pinned Repositories</SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {repos.map((repo) => (
-          <Link href={repo.html_url} key={repo.id} target="_blank" rel="noopener noreferrer" className="block group">
+          <Link href={repo.html_url} key={repo.full_name || repo.html_url || repo.name} target="_blank" rel="noopener noreferrer" className="block group">
             <Card className="h-full flex flex-col bg-card hover:border-primary transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/20">
               <CardHeader>
                 <div className="flex justify-between items-start gap-4">

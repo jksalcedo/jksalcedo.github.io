@@ -21,7 +21,6 @@ export type GithubRepo = {
   full_name: string;
   html_url: string;
   description: string | null;
-  fork: boolean;
   url: string;
   stargazers_count: number;
   watchers_count: number;

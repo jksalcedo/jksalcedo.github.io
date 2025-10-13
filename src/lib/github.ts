@@ -62,7 +62,6 @@ export async function getPinnedRepos(username: string): Promise<GithubRepo[]> {
       full_name: repo?.nameWithOwner ?? repo?.full_name ?? '',
       html_url: repo?.url ?? repo?.html_url ?? '',
       description: repo?.description ?? null,
-      fork: Boolean(repo?.fork ?? false),
       url: repo?.url ?? repo?.html_url ?? '',
       stargazers_count: repo?.stargazers?.totalCount ?? repo?.stars ?? 0,
       watchers_count: repo?.watchers?.totalCount ?? 0,
@@ -85,7 +84,6 @@ export async function getPinnedRepos(username: string): Promise<GithubRepo[]> {
                   name
                   nameWithOwner
                   description
-                  fork
                   url
                   stargazers { totalCount }
                   watchers { totalCount }
