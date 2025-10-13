@@ -54,22 +54,22 @@ export async function getPinnedRepos(username: string): Promise<GithubRepo[]> {
               ... on Repository {
                 id
                 name
-                full_name: nameWithOwner
+                nameWithOwner
                 html_url
                 description
                 fork
                 url
-                stargazers_count: stargazers {
+                stargazers {
                   totalCount
                 }
-                watchers_count: watchers {
+                watchers {
                   totalCount
                 }
-                language: primaryLanguage {
+                primaryLanguage {
                   name
                 }
-                forks_count: forkCount
-                open_issues_count: issues(states: OPEN) {
+                forkCount
+                issues(states: OPEN) {
                   totalCount
                 }
               }
@@ -112,12 +112,18 @@ export async function getPinnedRepos(username: string): Promise<GithubRepo[]> {
 
     // Map the GraphQL response to our GithubRepo type
     return pinnedItems.map((repo: any) => ({
-        ...repo,
-        stargazers_count: repo.stargazers_count.totalCount,
-        watchers_count: repo.watchers_count.totalCount,
-        language: repo.language?.name || null,
-        forks_count: repo.forks_count,
-        open_issues_count: repo.open_issues_count.totalCount,
+      id: repo.id,
+      name: repo.name,
+      full_name: repo.nameWithOwner,
+      html_url: repo.html_url,
+      description: repo.description,
+      fork: repo.fork,
+      url: repo.url,
+      stargazers_count: repo.stargazers.totalCount,
+      watchers_count: repo.watchers.totalCount,
+      language: repo.primaryLanguage?.name || null,
+      forks_count: repo.forkCount,
+      open_issues_count: repo.issues.totalCount,
     }));
 
   } catch (error) {
