@@ -28,10 +28,4 @@ export type GithubRepo = {
   language: string | null;
   forks_count: number;
   open_issues_count: number;
-  license: {
-    key: string;
-    name: string;
-    spdx_id: string;
-    url: string;
-  } | null;
 };

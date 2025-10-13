@@ -6,12 +6,19 @@ import SectionTitle from "@/components/section-title";
 
 export default function RepositoriesSection({ repos }: { repos: GithubRepo[] }) {
   if (!repos || repos.length === 0) {
-    return null;
+    return (
+        <section id="repositories">
+            <SectionTitle>Pinned Repositories</SectionTitle>
+            <div className="text-center text-muted-foreground">
+                <p>No pinned repositories found. Pin some on your GitHub profile!</p>
+            </div>
+        </section>
+    );
   }
 
   return (
     <section id="repositories">
-      <SectionTitle>Top Repositories</SectionTitle>
+      <SectionTitle>Pinned Repositories</SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {repos.map((repo) => (
           <Link href={repo.html_url} key={repo.id} target="_blank" rel="noopener noreferrer" className="block group">

@@ -5,14 +5,14 @@ import ContactSection from '@/components/sections/contact';
 import HeroSection from '@/components/sections/hero';
 import RepositoriesSection from '@/components/sections/repositories';
 import SkillsSection from '@/components/sections/skills';
-import { getRepos, getUser } from '@/lib/github';
+import { getPinnedRepos, getUser } from '@/lib/github';
 import FadeInSection from '@/components/fade-in-section';
 
 export default async function Home() {
   // Fetch data in parallel
   const [user, repos] = await Promise.all([
     getUser('jksalcedo'),
-    getRepos('jksalcedo')
+    getPinnedRepos('jksalcedo')
   ]);
 
   return (
