@@ -30,7 +30,7 @@ export default async function Home() {
             <RepositoriesSection repos={repos} />
           </FadeInSection>
           <FadeInSection>
-            <SkillsSection />
+            <SkillsSection repos={repos} />
           </FadeInSection>
           <FadeInSection>
             <ContactSection />

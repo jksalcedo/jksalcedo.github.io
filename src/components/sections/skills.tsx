@@ -1,5 +1,6 @@
 import SectionTitle from "@/components/section-title";
-import { Server, Wind, Database } from "lucide-react";
+import type { GithubRepo } from "@/lib/types";
+import { Server, Wind, Database, Code } from "lucide-react";
 
 const ReactIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -31,17 +32,45 @@ const TypescriptIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+const languageIcons: { [key: string]: React.ReactNode } = {
+  'TypeScript': <TypescriptIcon className="h-10 w-10" />,
+  'JavaScript': <ReactIcon className="h-10 w-10 text-yellow-400" />,
+  'React': <ReactIcon className="h-10 w-10 text-cyan-400" />,
+  'Next.js': <NextjsIcon className="h-10 w-10" />,
+  'Node.js': <Server className="h-10 w-10 text-green-500" />,
+  'Tailwind CSS': <Wind className="h-10 w-10 text-sky-400" />,
+  'HTML': <Code className="h-10 w-10 text-orange-500" />,
+  'CSS': <Code className="h-10 w-10 text-blue-500" />,
+  'SQL/NoSQL': <Database className="h-10 w-10 text-orange-400" />,
+  'Python': <Code className="h-10 w-10 text-blue-400" />,
+  'Java': <Code className="h-10 w-10 text-red-500" />,
+  'C#': <Code className="h-10 w-10 text-purple-500" />,
+};
 
-const skills = [
-  { name: 'TypeScript', icon: <TypescriptIcon className="h-10 w-10" /> },
-  { name: 'React', icon: <ReactIcon className="h-10 w-10 text-cyan-400" /> },
-  { name: 'Next.js', icon: <NextjsIcon className="h-10 w-10" /> },
-  { name: 'Node.js', icon: <Server className="h-10 w-10 text-green-500" /> },
-  { name: 'Tailwind CSS', icon: <Wind className="h-10 w-10 text-sky-400" /> },
-  { name: 'SQL/NoSQL', icon: <Database className="h-10 w-10 text-orange-400" /> },
-];
+const getTopLanguages = (repos: GithubRepo[]): string[] => {
+    const languageCount: { [key: string]: number } = {};
+    repos.forEach(repo => {
+        if (repo.language) {
+            languageCount[repo.language] = (languageCount[repo.language] || 0) + 1;
+        }
+    });
 
-export default function SkillsSection() {
+    const sortedLanguages = Object.keys(languageCount).sort(
+        (a, b) => languageCount[b] - languageCount[a]
+    );
+
+    return sortedLanguages.slice(0, 6);
+}
+
+export default function SkillsSection({ repos }: { repos: GithubRepo[] }) {
+    const topLanguages = getTopLanguages(repos);
+
+    const skills = topLanguages.map(lang => ({
+        name: lang,
+        icon: languageIcons[lang] || <Code className="h-10 w-10" />
+    }));
+
+
   return (
     <section id="skills">
       <SectionTitle>My Tech Stack</SectionTitle>
