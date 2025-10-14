@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import { Menu, X } from 'lucide-react';
-import { Button } from './ui/button';
+import {cn} from '@/lib/utils';
+import {Menu, X} from 'lucide-react';
+import {Button} from './ui/button';
 
 export default function PageHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,10 +19,10 @@ export default function PageHeader() {
   }, []);
 
   const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#repositories', label: 'Repositories' },
+      {href: '#projects', label: 'Projects'},
     { href: '#skills', label: 'Skills' },
     { href: '#contact', label: 'Contact' },
+      {href: '/blog', label: 'Blog'}, // Link to a new page
   ];
 
   return (
@@ -38,9 +38,14 @@ export default function PageHeader() {
         </Link>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {navLinks.map(link => (
-            <Link key={link.href} href={link.href} className="hover:text-primary transition-colors">
-              {link.label}
-            </Link>
+              <Link
+                  key={link.label}
+                  href={link.href}
+                  className="hover:text-primary transition-colors"
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+              >
+                  {link.label}
+              </Link>
           ))}
         </nav>
         <div className="md:hidden">

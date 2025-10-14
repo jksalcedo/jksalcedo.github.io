@@ -1,55 +1,102 @@
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import type { GithubRepo } from "@/lib/types";
-import { Star, GitFork, ExternalLink } from "lucide-react";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {ExternalLink, Github} from "lucide-react";
 import SectionTitle from "@/components/section-title";
+import {Badge} from "@/components/ui/badge";
+import {projects} from "@/lib/project"; // Import your projects data
 
-export default function RepositoriesSection({ repos }: { repos: GithubRepo[] }) {
-  if (!repos || repos.length === 0) {
+export default function FeaturedProjectsSection() {
     return (
-        <section id="repositories">
-            <SectionTitle>Pinned Repositories</SectionTitle>
-            <div className="text-center text-muted-foreground">
-                <p>No pinned repositories found. Pin some on your GitHub profile!</p>
+        <section id="projects"> {/* New ID */}
+            <SectionTitle>Featured Projects</SectionTitle>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {projects.map((project) => (
+                    <Card key={project.title} className="bg-card flex flex-col overflow-hidden group">
+                        <CardHeader>
+                            <CardTitle className="text-xl font-headline">{project.title}</CardTitle>
+                            <CardDescription className="pt-2">{project.description}</CardDescription>
+                        </CardHeader>
+                        <CardContent className="mt-auto flex flex-col gap-4">
+                            <div className="flex flex-wrap gap-2">
+                                {project.techStack.map((tech) => (
+                                    <Badge key={tech} variant="secondary">{tech}</Badge>
+                                ))}
+                            </div>
+                            <div className="flex items-center gap-4 mt-2">
+                                <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+                                      className="flex items-center gap-2 hover:text-primary transition-colors">
+                                    <Github className="w-5 h-5"/>
+                                    Code
+                                </Link>
+                                {project.liveDemoUrl && (
+                                    <Link href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer"
+                                          className="flex items-center gap-2 hover:text-primary transition-colors">
+                                        <ExternalLink className="w-5 h-5"/>
+                                        {project.liveDemoText || 'Live Demo'}
+                                    </Link>
+                                )}
+                            </div>
+                        </CardContent>
+                    </Card>
+                ))}
             </div>
         </section>
     );
-  }
-
-  return (
-    <section id="repositories">
-      <SectionTitle>Pinned Repositories</SectionTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {repos.map((repo) => (
-          <Link href={repo.html_url} key={repo.full_name || repo.html_url || repo.name} target="_blank" rel="noopener noreferrer" className="block group">
-            <Card className="h-full flex flex-col bg-card hover:border-primary transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/20">
-              <CardHeader>
-                <div className="flex justify-between items-start gap-4">
-                  <CardTitle className="text-xl font-headline group-hover:text-primary transition-colors">{repo.name}</CardTitle>
-                  <ExternalLink className="w-4 h-4 text-muted-foreground shrink-0" />
-                </div>
-                {repo.description && <CardDescription className="flex-grow pt-2 text-muted-foreground">{repo.description}</CardDescription>}
-              </CardHeader>
-              <CardContent className="mt-auto flex items-center gap-4 text-sm text-muted-foreground">
-                {repo.language && (
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-primary" />
-                    <span>{repo.language}</span>
-                  </div>
-                )}
-                <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4" />
-                  <span>{repo.stargazers_count}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <GitFork className="w-4 h-4" />
-                  <span>{repo.forks_count}</span>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
 }
+
+
+// import Link from "next/link";
+// import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+// import type { GithubRepo } from "@/lib/types";
+// import { Star, GitFork, ExternalLink } from "lucide-react";
+// import SectionTitle from "@/components/section-title";
+//
+// export default function RepositoriesSection({ repos }: { repos: GithubRepo[] }) {
+//   if (!repos || repos.length === 0) {
+//     return (
+//         <section id="repositories">
+//             <SectionTitle>Pinned Repositories</SectionTitle>
+//             <div className="text-center text-muted-foreground">
+//                 <p>No pinned repositories found. Pin some on your GitHub profile!</p>
+//             </div>
+//         </section>
+//     );
+//   }
+//
+//   return (
+//     <section id="repositories">
+//       <SectionTitle>Pinned Repositories</SectionTitle>
+//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+//         {repos.map((repo) => (
+//           <Link href={repo.html_url} key={repo.full_name || repo.html_url || repo.name} target="_blank" rel="noopener noreferrer" className="block group">
+//             <Card className="h-full flex flex-col bg-card hover:border-primary transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/20">
+//               <CardHeader>
+//                 <div className="flex justify-between items-start gap-4">
+//                   <CardTitle className="text-xl font-headline group-hover:text-primary transition-colors">{repo.name}</CardTitle>
+//                   <ExternalLink className="w-4 h-4 text-muted-foreground shrink-0" />
+//                 </div>
+//                 {repo.description && <CardDescription className="flex-grow pt-2 text-muted-foreground">{repo.description}</CardDescription>}
+//               </CardHeader>
+//               <CardContent className="mt-auto flex items-center gap-4 text-sm text-muted-foreground">
+//                 {repo.language && (
+//                   <div className="flex items-center gap-2">
+//                     <span className="w-3 h-3 rounded-full bg-primary" />
+//                     <span>{repo.language}</span>
+//                   </div>
+//                 )}
+//                 <div className="flex items-center gap-1">
+//                   <Star className="w-4 h-4" />
+//                   <span>{repo.stargazers_count}</span>
+//                 </div>
+//                 <div className="flex items-center gap-1">
+//                   <GitFork className="w-4 h-4" />
+//                   <span>{repo.forks_count}</span>
+//                 </div>
+//               </CardContent>
+//             </Card>
+//           </Link>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
