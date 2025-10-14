@@ -12,7 +12,7 @@ export default function ContactSection() {
           I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out to me.
         </p>
         <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-          <a href="mailto:jksalcedo@example.com">
+          <a href="mailto:salcedo.jaressenkyle@gmail.com">
             <Mail className="mr-2 h-5 w-5" />
             Say Hello
           </a>
@@ -26,7 +26,7 @@ export default function ContactSection() {
             <Linkedin className="h-7 w-7" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link href="https://twitter.com/jksalcedo" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+          <Link href="https://twitter.com/jksalcedoo" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Twitter className="h-7 w-7" />
             <span className="sr-only">Twitter</span>
           </Link>
