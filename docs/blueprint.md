@@ -1,21 +1,31 @@
-# **App Name**: Git Showcase
+# Blueprint: Next.js Portfolio & Blog
 
-## Core Features:
+This document outlines the plan, structure, and features for the personal portfolio website of Jaressen Kyle Salcedo.
 
-- GitHub Profile Fetch: Dynamically fetch and display user jksalcedo's GitHub profile information.
-- Top Repositories Display: Display a list of jksalcedo's most popular GitHub repositories, including descriptions and links to each repository.
-- About Me Section: A customizable 'About Me' section where jksalcedo can provide a personal introduction and background information.
-- Skills Section: A dedicated skills section to highlight jksalcedo's technical skills and expertise.
-- Contact Information: An integrated contact form or display of contact information for visitors to get in touch with jksalcedo.
+## 1. Project Objective
 
-## Style Guidelines:
+The primary goal is to create a **professional hybrid portfolio** that serves two main purposes:
 
-- Background color: Dark charcoal (#222222) to create a sleek and modern look.
-- Primary color: Striking Green (#39FF14) for highlights and accents to convey a tech-focused feel.
-- Text color: White (#FFFFFF) for readability against the dark background. Desaturated Green (#A7F097) for secondary text to soften the contrast.
-- Headline font: 'Space Grotesk' sans-serif font for a computerized, techy, scientific feel.
-- Body font: 'Inter' sans-serif font for body text because it is easy to read.
-- Use modern and minimalist icons for skills and external links.
-- Implement a clean, grid-based layout to showcase content effectively.
-- Subtle animations on scroll or hover to add a dynamic feel without being distracting.
-- Each section should have its own fade-in animation when it comes into view.
+1. **Showcase Skills:** To act as a polished, curated showcase of my best software development projects for potential
+   employers and recruiters.
+2. **Build Personal Brand:** To provide a platform for personal expression and learning through a blog, demonstrating
+   passion and continuous growth in the tech field.
+
+The final product should be fast, responsive, and visually clean, prioritizing content and clarity.
+
+---
+
+## 2. Technology Stack
+
+* **Framework:** Next.js (App Router)
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS
+* **UI Components:** shadcn/ui
+* **Icons:** react-icons
+* **Deployment:** Vercel
+
+---
+
+## 3. Project & File Structure
+
+The project will follow a standard Next.js App Router structure to keep it organized and scalable.
