@@ -12,7 +12,7 @@ export default function ContactSection() {
           I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out to me.
         </p>
         <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-          <a href="mailto:jksalcedo@example.com">
+          <a href="mailto:salcedo.jaressenkyle@gmail.com">
             <Mail className="mr-2 h-5 w-5" />
             Say Hello
           </a>
