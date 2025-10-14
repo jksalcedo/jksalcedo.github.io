@@ -22,11 +22,11 @@ export default function ContactSection() {
             <Github className="h-7 w-7" />
             <span className="sr-only">GitHub</span>
           </Link>
-          <Link href="https://linkedin.com/in/jksalcedo" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+          <Link href="https://linkedin.com/in/jaressen-kyle-salcedo-20769a38a" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Linkedin className="h-7 w-7" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link href="https://twitter.com/jksalcedo" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+          <Link href="https://twitter.com/jksalcedoo" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Twitter className="h-7 w-7" />
             <span className="sr-only">Twitter</span>
           </Link>
