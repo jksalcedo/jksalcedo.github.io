@@ -3,19 +3,18 @@ import PageHeader from '@/components/page-header';
 import AboutSection from '@/components/sections/about';
 import ContactSection from '@/components/sections/contact';
 import HeroSection from '@/components/sections/hero';
-import RepositoriesSection from '@/components/sections/repositories';
 import SkillsSection from '@/components/sections/skills';
-import { getPinnedRepos, getUser } from '@/lib/github';
+import {getUser} from '@/lib/github';
 import FadeInSection from '@/components/fade-in-section';
+import FeaturedProjectsSection from "@/components/sections/repositories";
 
 export default async function Home() {
   // Read GitHub username from environment to allow public clones to configure it
   const USERNAME = process.env.GITHUB_USERNAME || process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'jksalcedo';
 
   // Fetch data in parallel
-  const [user, repos] = await Promise.all([
-    getUser(USERNAME),
-    getPinnedRepos(USERNAME)
+  const [user] = await Promise.all([
+    getUser(USERNAME)
   ]);
 
   return (
@@ -30,10 +29,10 @@ export default async function Home() {
             <AboutSection />
           </FadeInSection>
           <FadeInSection>
-            <RepositoriesSection repos={repos} />
+            <FeaturedProjectsSection/>
           </FadeInSection>
           <FadeInSection>
-            <SkillsSection repos={repos} />
+            <SkillsSection/>
           </FadeInSection>
           <FadeInSection>
             <ContactSection />
