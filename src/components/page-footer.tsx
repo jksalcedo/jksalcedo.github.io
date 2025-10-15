@@ -7,7 +7,7 @@ export default function PageFooter() {
         <p className="text-sm">
           &copy; {new Date().getFullYear()} Jaressen Kyle Salcedo. All Rights Reserved.
         </p>
-        <div className="hidden sm:block mx-2">|</div>
+        {/* <div className="hidden sm:block mx-2">|</div>
         <p className="text-sm">
           Made with{' '}
           <Link
@@ -18,7 +18,7 @@ export default function PageFooter() {
           >
             Firebase Studio
           </Link>
-        </p>
+        </p> */}
       </div>
     </footer>
   );
