@@ -12,8 +12,7 @@ Quick start
 
 Environment
 - Required to customize: GITHUB_USERNAME=your_github_username
-- Optional (for higher rate limits and richer data): GITHUB_TOKEN=your_github_pat
-  - Without a token, the app falls back to a public pinned-repos service.
+
 
 Build & start
 - npm run build
